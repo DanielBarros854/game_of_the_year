@@ -34,4 +34,8 @@ public class People {
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
+
+	public void gerPeopleInfo() {
+		System.out.println("Nome: " + name + "\nVida: " + life + "\nDano: " + damage);
+	}
 }
