@@ -1,22 +1,53 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-import Entities.Enemy;
 import Entities.Hero;
+import Functions.InputName;
+import Functions.Menu;
 import Utils.ClearWindow;
 
 class Main {
 	public static void main(String[] args) throws IOException, InterruptedException {
-		ClearWindow.main(args);
-
+		int menu = 0;
 		Scanner s = new Scanner(System.in);
-		System.out.println("Qual seu nome nobre guerreiro(a)?");
-		String name = s.next();
-		ClearWindow.main(args);
 
-		Hero player1 = new Hero(name, 100, 3);
+		String name = InputName.main(s);
 
-		player1.gerPeopleInfo();
+		do {
+			ClearWindow.main();
+			Hero player = new Hero(name, 100, 3);
+
+			Menu.getMenu();
+			String selected = s.next();
+
+			switch (selected) {
+				case "1":
+					System.out.println("Iniciando!!!");
+					break;
+
+				case "2":
+					System.out.println("Config!!!");
+					break;
+
+				case "3":
+					ClearWindow.main();
+					player.gerPeopleInfo();
+					System.in.read();
+					break;
+
+				case "4":
+					menu = 1;
+					break;
+
+				default:
+					ClearWindow.main();
+					System.out.println("Informe uma opção valida!!!");
+					System.in.read();
+					ClearWindow.main();
+					break;
+			}
+
+		} while (menu == 0);
 
 		s.close();
 	}
